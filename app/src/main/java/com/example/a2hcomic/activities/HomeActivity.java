@@ -1,8 +1,6 @@
-package com.example.a2hcomic;
+package com.example.a2hcomic.activities;
 
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +10,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.a2hcomic.R;
 import com.example.a2hcomic.adapters.ComicHomeAdapter;
 import com.example.a2hcomic.models.Comic;
 

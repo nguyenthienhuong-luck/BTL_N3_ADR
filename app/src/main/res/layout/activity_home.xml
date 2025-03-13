@@ -6,21 +6,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".activities.HomeActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+
+        <ImageView
+            android:id="@+id/square_top_home"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:src="@drawable/square_top_home" />
+
+        <Button
+            android:id="@+id/ic_search_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="100dp"
+            android:layout_marginBottom="20dp"
+            android:backgroundTint="@color/white"
+            android:textColorHint="Tim kiem chuyen"
+            android:drawableEnd="@drawable/ic_search_home"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_search1_home"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginEnd="10dp"
+            />
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/new_bg"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="200dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="30dp">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/pink_bg" />
+            android:src="@drawable/pink_bg_home" />
 
         <ImageView
             android:layout_width="match_parent"
@@ -32,7 +66,7 @@
             android:paddingEnd="10dp"
             android:paddingBottom="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/white_bg" />
+            android:src="@drawable/white_bg_login" />
 
         <TextView
             android:id="@+id/titlenew"
@@ -49,7 +83,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listNew"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="100dp"
             android:layout_below="@+id/titlenew"
             android:layout_alignStart="@id/titlenew"
             android:layout_alignParentEnd="true"
@@ -71,7 +105,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/pink_bg" />
+            android:src="@drawable/pink_bg_home"
+            android:layout_marginTop="30dp"
+            />
 
         <ImageView
             android:layout_width="match_parent"
@@ -79,18 +115,18 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentBottom="true"
             android:paddingStart="10dp"
-            android:paddingTop="5dp"
+            android:paddingTop="35dp"
             android:paddingEnd="10dp"
             android:paddingBottom="15dp"
             android:scaleType="fitXY"
-            android:src="@drawable/white_bg" />
+            android:src="@drawable/white_bg_login" />
 
         <TextView
             android:id="@+id/titlefav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="35dp"
             android:text="Yeu Thich"
             android:textColor="@color/pink"
             android:textSize="20dp"
@@ -109,5 +145,52 @@
             android:layout_marginBottom="30dp" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/square_end_home"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@drawable/square_end_home"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginTop="70dp"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp">
+
+        <ImageButton
+            android:id="@+id/btnHomePage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/bt_home_page" />
+
+        <ImageButton
+            android:id="@+id/bt_archive_page"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="40dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/bt_archive_page" />
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="40dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_notification_page"
+            />
+
+        <ImageButton
+            android:id="@+id/btnSetting"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_user_home" />
+
+    </LinearLayout>
 
 </LinearLayout>

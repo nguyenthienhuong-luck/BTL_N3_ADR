@@ -18,10 +18,10 @@
         android:id="@+id/titlelogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Đăng Nhập"
+        android:text="Đăng Ký"
         android:layout_below="@id/circletop"
         android:layout_centerInParent="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:textSize="30dp"
         android:textColor="@color/pink"
         />
@@ -36,11 +36,10 @@
         <ImageView
             android:id="@+id/square1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="400dp"
             android:scaleType="fitXY"
-            android:src="@drawable/square1_login"
+            android:src="@drawable/square1_login" />
 
-            />
         <ImageView
             android:id="@+id/circle2"
             android:layout_width="wrap_content"
@@ -54,7 +53,7 @@
             android:id="@+id/edtext1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email dang nhap"
+            android:hint="Tên đăng nhập"
             android:layout_centerInParent="true"
             android:layout_below="@id/circle2"
             android:layout_marginStart="60dp"
@@ -63,14 +62,36 @@
             />
 
         <EditText
+            android:id="@+id/edtext2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/edtext1"
             android:layout_centerInParent="true"
             android:layout_marginStart="60dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:drawableEnd="@drawable/key_ic_login"
-            android:hint="Mat khau" />
+            android:hint="Email" />
+
+        <EditText
+            android:id="@+id/edtext3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtext2"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
+            android:drawableEnd="@drawable/key_ic_login"
+            android:hint="Nhap mat khau" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtext3"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginBottom="40dp"
+            android:drawableEnd="@drawable/key_ic_login"
+            android:hint="Nhap lai mat khau"
+            />
 
         <Button
             android:layout_width="wrap_content"
@@ -78,16 +99,18 @@
             android:layout_alignBottom="@id/square1"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp"
             android:text="Đăng Nhập"
             android:textColor="@color/white"
             android:backgroundTint="@color/pink"
+            android:layout_below="@id/edtext3"
             />
     </RelativeLayout>
-       <ImageView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:src="@drawable/circle3_login"
-           android:layout_alignParentBottom="true"
-           android:layout_alignParentEnd="true"
-           />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/circle3_login"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        />
 </RelativeLayout>

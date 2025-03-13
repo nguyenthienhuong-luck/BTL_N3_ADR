@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ReadComicActivity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/square_top_home"
+        android:text="Chương 1"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:paddingTop="10dp"
+        android:layout_alignParentTop="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/square_end_home"
+        android:layout_width="match_parent"
+        android:layout_height="74dp"
+        android:background="@drawable/square_end_home"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        >
+
+        <ImageButton
+            android:id="@+id/btnHomePage"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:scaleType="fitCenter"
+            android:layout_marginStart="20dp"
+            app:srcCompat="@drawable/bt_home_page" />
+
+        <ImageButton
+            android:id="@+id/bt_archive_page"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="40dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/bt_archive_page" />
+
+        <ImageButton
+            android:id="@+id/btnNotification"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="40dp"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_notification_page"
+            />
+
+        <ImageButton
+            android:id="@+id/btnSetting"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="40dp"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/ic_user_home" />
+
+    </LinearLayout>
+
+</RelativeLayout>
