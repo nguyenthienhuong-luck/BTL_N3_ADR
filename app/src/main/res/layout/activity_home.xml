@@ -18,7 +18,7 @@
             android:layout_height="100dp"
             android:src="@drawable/square_top_home" />
 
-        <Button
+        <EditText
             android:id="@+id/ic_search_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,9 +26,10 @@
             android:layout_marginStart="20dp"
             android:layout_marginEnd="100dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="@color/white"
-            android:textColorHint="Tim kiem chuyen"
+            android:background="@color/white"
+            android:padding="10dp"
             android:drawableEnd="@drawable/ic_search_home"
+            android:hint="Tim kiem truyen..."
             />
 
         <ImageView
@@ -158,7 +159,7 @@
         android:paddingRight="25dp">
 
         <ImageButton
-            android:id="@+id/btnHomePage"
+            android:id="@+id/btn_home_page"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:scaleType="fitCenter"

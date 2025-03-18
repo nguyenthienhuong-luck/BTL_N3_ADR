@@ -11,6 +11,7 @@ public class Comic {
     private int create_at;
 
     public Comic() {
+
     }
 
     public Comic(String author_id, String banner_url, String description, String id, String img_url, String title, String user_id, int create_at) {

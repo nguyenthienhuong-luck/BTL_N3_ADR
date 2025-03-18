@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.View;
+import android.widget.Button;
 import com.example.a2hcomic.R;
 import com.example.a2hcomic.adapters.ComicHomeAdapter;
 import com.example.a2hcomic.models.Comic;
@@ -29,29 +31,31 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        RecyclerView rvnew = findViewById(R.id.listNew);
-        RecyclerView rvfav = findViewById(R.id.listFav);
+        {
 
-        ArrayList<Comic> comics = new ArrayList<>();
-        comics.add(new Comic("1","1","1","1","1","1","1",1));
-        comics.add(new Comic("2","2","2","2","2","2","2",2));
-        comics.add(new Comic("3","3","3","3","3","3","3",3));
-        comics.add(new Comic("4","4","4","4","4","4","4",4));
-        comics.add(new Comic("5","5","5","5","5","5","5",5));
+            RecyclerView rvnew = findViewById(R.id.listNew);
+            RecyclerView rvfav = findViewById(R.id.listFav);
 
-        ComicHomeAdapter adapterNew = new ComicHomeAdapter(comics);
+            ArrayList<Comic> comics = new ArrayList<>();
+            comics.add(new Comic("1", "1", "1", "1", "1", "1", "1", 1));
+            comics.add(new Comic("2", "2", "2", "2", "2", "2", "2", 2));
+            comics.add(new Comic("3", "3", "3", "3", "3", "3", "3", 3));
+            comics.add(new Comic("4", "4", "4", "4", "4", "4", "4", 4));
+            comics.add(new Comic("5", "5", "5", "5", "5", "5", "5", 5));
 
-        rvnew.setLayoutManager(new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL,
-                false));
-        rvnew.setAdapter(adapterNew);
+            ComicHomeAdapter adapterNew = new ComicHomeAdapter(comics);
 
-        rvfav.setLayoutManager(new LinearLayoutManager(this,
-                LinearLayoutManager.HORIZONTAL,
-                false));
-        rvfav.setAdapter(adapterNew);
+            rvnew.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false));
+            rvnew.setAdapter(adapterNew);
 
+            rvfav.setLayoutManager(new LinearLayoutManager(this,
+                    LinearLayoutManager.HORIZONTAL,
+                    false));
+            rvfav.setAdapter(adapterNew);
+
+        }
     }
-
 
 }

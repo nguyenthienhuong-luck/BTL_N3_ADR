@@ -39,7 +39,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_below="@id/adm_square"
-            android:src="@drawable/Square_adm_1"
+            android:src="@drawable/square_adm_1"
             android:layout_marginTop="55dp"
             android:layout_marginStart="40dp"
             />

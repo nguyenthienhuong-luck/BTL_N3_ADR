@@ -50,7 +50,7 @@
             android:layout_marginTop="15dp"
             />
         <EditText
-            android:id="@+id/edtext1"
+            android:id="@+id/edt_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tên đăng nhập"
@@ -62,10 +62,10 @@
             />
 
         <EditText
-            android:id="@+id/edtext2"
+            android:id="@+id/edt_useremail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edtext1"
+            android:layout_below="@id/edt_username"
             android:layout_centerInParent="true"
             android:layout_marginStart="60dp"
             android:layout_marginTop="10dp"
@@ -73,19 +73,20 @@
             android:hint="Email" />
 
         <EditText
-            android:id="@+id/edtext3"
+            android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edtext2"
+            android:layout_below="@id/edt_useremail"
             android:layout_centerInParent="true"
             android:layout_marginStart="60dp"
             android:layout_marginTop="10dp"
             android:drawableEnd="@drawable/key_ic_login"
             android:hint="Nhap mat khau" />
         <EditText
+            android:id="@+id/edt_repassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edtext3"
+            android:layout_below="@+id/edt_password"
             android:layout_centerInParent="true"
             android:layout_marginStart="60dp"
             android:layout_marginBottom="40dp"
@@ -94,16 +95,17 @@
             />
 
         <Button
+            android:id="@+id/btn_dangky"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/square1"
             android:layout_centerInParent="true"
             android:layout_marginBottom="30dp"
             android:layout_marginTop="50dp"
-            android:text="Đăng Nhập"
+            android:text="Đăng Ký"
             android:textColor="@color/white"
             android:backgroundTint="@color/pink"
-            android:layout_below="@id/edtext3"
+            android:layout_below="@id/edt_password"
             />
     </RelativeLayout>
     <ImageView
