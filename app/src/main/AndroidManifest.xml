@@ -12,6 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme._2Hcomic"
         tools:targetApi="31">
+
+        <activity
+            android:name=".activities.account.AccountActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.ReadComicActivity"
             android:exported="true">
@@ -21,11 +31,7 @@
             android:exported="true">
         </activity>
         <activity
-            android:name=".activities.ForgetPassword"
-            android:exported="true">
-        </activity>
-        <activity
-            android:name=".activities.RegisterActivity"
+            android:name=".activities.account.ForgetPassword"
             android:exported="true">
         </activity>
         <activity
@@ -34,15 +40,7 @@
         <activity
             android:name=".activities.HomeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.LoginActivity"
-            android:exported="true" />
-    </application>
 
+    </application>
 </manifest>

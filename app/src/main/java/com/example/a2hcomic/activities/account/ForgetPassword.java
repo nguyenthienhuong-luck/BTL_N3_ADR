@@ -1,4 +1,4 @@
-package com.example.a2hcomic.activities;
+package com.example.a2hcomic.activities.account;
 
 import android.os.Bundle;
 
