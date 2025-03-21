@@ -1,6 +1,7 @@
 package com.example.a2hcomic.activities.account;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,11 +21,6 @@ import com.example.a2hcomic.activities.HomeActivity;
 import com.example.a2hcomic.db.FirebaseService;
 import com.example.a2hcomic.db.UserService;
 import com.example.a2hcomic.models.User;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.SignInMethodQueryResult;
-import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.Query;
@@ -60,7 +56,6 @@ public class LoginFragment extends Fragment {
         btn_dangnhap.setOnClickListener(v -> checkEmailExists());
 
         // Chuyển sang màn hình REGISTERFRAGMENT
-
         bt_dangky1.setOnClickListener(v -> {
             Fragment fragment = new RegisterFragment();
             getActivity().getSupportFragmentManager().beginTransaction()
@@ -68,7 +63,6 @@ public class LoginFragment extends Fragment {
                     .addToBackStack(null)
                     .commit();
         });
-
         return view;
     }
 
@@ -100,11 +94,12 @@ public class LoginFragment extends Fragment {
                 if (snapshot.exists()) {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         User user = userSnapshot.getValue(User.class);
-                        if(CheckPassword(password, user.getPassword(), user.getStatus()))
+                        if(CheckPassword(password, user.getPassword(), user.getStatus())) {
                             startActivity(new Intent(getActivity(), HomeActivity.class));
+                            saveLoginState(user.getId(), user.getEmail(), user.getPassword());;
+                        }
                         else
                             Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-
                         return;
                     }
                 }
@@ -123,6 +118,25 @@ public class LoginFragment extends Fragment {
                 return false;
         else
             return false;
+    }
+
+    //Luu vao local
+    private void saveLoginState(String id, String email, String password) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("id", id);
+        editor.putString("email", email);
+        editor.putString("password", password);
+        editor.apply();
+    }
+
+    private void loadLoginState(String id, String email, String password) {
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE);
+        String userId1 = sharedPreferences.getString("id", "");
+        String email1 = sharedPreferences.getString("email", "");
+        String password1 = sharedPreferences.getString("password", "");
+
+
     }
 
 }

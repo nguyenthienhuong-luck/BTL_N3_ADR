@@ -1,5 +1,6 @@
 package com.example.a2hcomic.activities.account;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,7 +16,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.a2hcomic.R;
 import android.view.inputmethod.InputMethodManager;
 public class AccountActivity extends AppCompatActivity {
+
     private FrameLayout frame_account;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +37,8 @@ public class AccountActivity extends AppCompatActivity {
             hideSoftKeyboard();
             return false;
         });
-        // khi khởi động chqyj LoginFragment
+
+        // khi khởi động chạy Fragment
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_account, new LoginFragment())
                 .commit();
