@@ -1,44 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".activities.HomeActivity">
+    tools:context=".activities.main.HomeFragment">
+
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:padding="20dp"
+        android:background="@drawable/square_top_home"
         >
 
-        <ImageView
-            android:id="@+id/square_top_home"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:src="@drawable/square_top_home" />
-
         <EditText
-            android:id="@+id/ic_search_home"
+            android:id="@+id/edt_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="100dp"
-            android:layout_marginBottom="20dp"
             android:background="@color/white"
             android:padding="10dp"
             android:drawableEnd="@drawable/ic_search_home"
             android:hint="Tim kiem truyen..."
+            android:layout_toLeftOf="@id/search_nangcao"
+            android:layout_marginEnd="20dp"
             />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:id="@+id/search_nangcao"
+            android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/ic_search1_home"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginEnd="10dp"
+            android:layout_alignParentRight="true"
             />
 
     </RelativeLayout>
@@ -47,9 +39,7 @@
         android:id="@+id/new_bg"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="30dp">
+        android:layout_margin="30dp">
 
         <ImageView
             android:layout_width="match_parent"
@@ -146,52 +136,5 @@
             android:layout_marginBottom="30dp" />
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:id="@+id/square_end_home"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:background="@drawable/square_end_home"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="70dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
-
-        <ImageButton
-            android:id="@+id/btn_home_page"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/bt_home_page" />
-
-        <ImageButton
-            android:id="@+id/bt_archive_page"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/bt_archive_page" />
-
-        <ImageButton
-            android:id="@+id/btnNotification"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_notification_page"
-            />
-
-        <ImageButton
-            android:id="@+id/btnSetting"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="40dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_user_home" />
-
-    </LinearLayout>
 
 </LinearLayout>

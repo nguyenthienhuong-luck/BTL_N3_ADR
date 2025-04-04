@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.PersionalActivity"
-    >
+    tools:context=".activities.main.PersonalFragment">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -81,9 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_margin="30dp"
         >
 
         <TextView
@@ -94,10 +89,7 @@
             android:drawableStart="@drawable/ic_shield_adm"
             android:drawableEnd="@drawable/ic_back_adm"
             android:text="Tài khoản"
-            android:paddingTop="12dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
+            android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp" />
@@ -106,13 +98,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:background="@drawable/br_square_adm"
-            android:drawableStart="@drawable/ic_exit_adm"
+            android:drawableStart="@drawable/ic_lock_adm"
             android:drawableEnd="@drawable/ic_back_adm"
             android:text="Quan tri vien"
-            android:paddingTop="12dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
+            android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp"
@@ -122,61 +111,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:background="@drawable/br_square_adm"
-            android:drawableStart="@drawable/ic_lock_adm"
+            android:drawableStart="@drawable/ic_exit_adm"
             android:drawableEnd="@drawable/ic_back_adm"
             android:text="Dang xuat"
-            android:paddingTop="12dp"
-            android:paddingBottom="10dp"
-            android:paddingEnd="20dp"
-            android:paddingStart="20dp"
+            android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp" />
 
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/square_end_home"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:background="@drawable/square_end_home"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:layout_marginTop="100dp"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp">
 
-        <ImageButton
-            android:id="@+id/btnHomePage"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/bt_home_page" />
-
-        <ImageButton
-            android:id="@+id/bt_archive_page"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/bt_archive_page" />
-
-        <ImageButton
-            android:id="@+id/btnNotification"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:background="@android:color/transparent"
-            android:layout_marginStart="40dp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_notification_page"
-            />
-
-        <ImageButton
-            android:id="@+id/btnSetting"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="40dp"
-            android:background="@android:color/transparent"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_user_home" />
-    </LinearLayout>
 </LinearLayout>

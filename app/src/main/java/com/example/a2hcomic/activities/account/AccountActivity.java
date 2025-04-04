@@ -19,7 +19,6 @@ public class AccountActivity extends AppCompatActivity {
 
     private FrameLayout frame_account;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +39,7 @@ public class AccountActivity extends AppCompatActivity {
 
         // khi khởi động chạy Fragment
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_account, new LoginFragment())
+                .replace(R.id.frame_account, new LoadFragment())
                 .commit();
 
     }

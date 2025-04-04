@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,24 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2hcomic.R;
-import com.example.a2hcomic.activities.HomeActivity;
+import com.example.a2hcomic.activities.main.MainActivity;
 import com.example.a2hcomic.db.FirebaseService;
-import com.example.a2hcomic.db.UserService;
 import com.example.a2hcomic.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class LoginFragment extends Fragment {
 
-    // TODO: Rename and change types of parameters
+    // TAG LOG
+    private static final String TAG = "LoginFragment";
+
     private EditText edt_email, edt_password;
     private Button btn_dangnhap;
     private TextView bt_dangky1;
-    private FirebaseService firebaseService;
-
-    private UserService userService;
+    private FirebaseService fb;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -52,8 +49,10 @@ public class LoginFragment extends Fragment {
         btn_dangnhap = view.findViewById(R.id.bt_dangnhap);
         bt_dangky1 = view.findViewById(R.id.bt_dangky1);
 
+        fb = new FirebaseService();
+
         // Xử lý sự kiện đăng nhập
-        btn_dangnhap.setOnClickListener(v -> checkEmailExists());
+        btn_dangnhap.setOnClickListener(v -> checkExists());
 
         // Chuyển sang màn hình REGISTERFRAGMENT
         bt_dangky1.setOnClickListener(v -> {
@@ -66,61 +65,45 @@ public class LoginFragment extends Fragment {
         return view;
     }
 
-    private void checkEmailExists() {
+    private void checkExists() {
         String email = edt_email.getText().toString().trim();
         String password = edt_password.getText().toString().trim();
-
-        // Khởi tạo Service
-        firebaseService = new FirebaseService();
-        userService = new UserService(firebaseService);
 
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(getActivity(), "Vui lòng nhập đầy đủ email và mật khẩu!", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (userService.checkEmailExists(email)) {
-            loginUser(email, password);
-        } else {
-            edt_email.setError("Email chưa được đăng ký!");
-            Toast.makeText(getActivity(), "Email chưa tồn tại. Vui lòng đăng ký!", Toast.LENGTH_SHORT).show();
-        }
 
+        loginUser(email, password);
     }
+
     private void loginUser(String email, String password) {
-        Query query = firebaseService.getUserRef().orderByChild("email").equalTo(email);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        fb.getUserRef()
+                .orderByChild("email")
+                .equalTo(email)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     for (DataSnapshot userSnapshot : snapshot.getChildren()) {
                         User user = userSnapshot.getValue(User.class);
-                        if(CheckPassword(password, user.getPassword(), user.getStatus())) {
-                            startActivity(new Intent(getActivity(), HomeActivity.class));
-                            saveLoginState(user.getId(), user.getEmail(), user.getPassword());;
+                        if (user.getPassword().equals(password) &&
+                                user.getStatus() == 0) {
+                            saveLoginState(user.getId(), user.getEmail(), user.getPassword());
                         }
-                        else
-                            Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-                        return;
+                        else Toast.makeText(getActivity(), "Sai mật khẩu", Toast.LENGTH_SHORT).show();
                     }
-                }
+                } else Toast.makeText(getActivity(), "Không tìm thấy tài khoản", Toast.LENGTH_SHORT).show();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) { }
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
-    private boolean CheckPassword(String password, String pass_user, int status) {
-        if(password.equals(pass_user))
-            if(status == 0)
-                return true;
-            else
-                return false;
-        else
-            return false;
-    }
-
-    //Luu vao local
+    // Luu vao local
     private void saveLoginState(String id, String email, String password) {
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -128,15 +111,10 @@ public class LoginFragment extends Fragment {
         editor.putString("email", email);
         editor.putString("password", password);
         editor.apply();
-    }
 
-    private void loadLoginState(String id, String email, String password) {
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE);
-        String userId1 = sharedPreferences.getString("id", "");
-        String email1 = sharedPreferences.getString("email", "");
-        String password1 = sharedPreferences.getString("password", "");
-
-
+        Toast.makeText(getActivity(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getActivity(), MainActivity.class));
+        getActivity().finish();
     }
 
 }
