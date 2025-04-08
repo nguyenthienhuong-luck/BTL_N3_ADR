@@ -27,9 +27,6 @@
         <activity
             android:name=".activities.ReadComicActivity"
             android:exported="true"></activity>
-        <activity
-            android:name=".activities.EditPersionalActivity"
-            android:exported="true"></activity>
 
     </application>
 
