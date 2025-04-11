@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.personal.EditAcountFragment">
+
+    <RelativeLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:padding="20dp"
+        android:background="@drawable/square_top_home">
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back_left"
+            android:scaleType="fitXY"
+            android:layout_alignParentStart="true"
+            android:background="@android:color/transparent"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tài khoản"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_centerHorizontal="true"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout_top"
+        android:padding="40dp"
+        >
+        <TextView
+            android:id="@+id/title_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email liên kết:"
+            android:textSize="20dp"
+            android:textColor="@color/pink"
+            />
+        <TextView
+            android:id="@+id/tv_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/title_email"
+            android:layout_marginStart="20dp"
+            android:text="email"
+            android:textSize="18dp"
+            />
+        <TextView
+            android:id="@+id/title_xoa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_email"
+            android:text="Xóa tài khoản"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/pink"
+            />
+        <TextView
+            android:id="@+id/title_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title_xoa"
+            android:text="Thay đổi mật khẩu:"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/pink"
+            />
+        <EditText
+            android:id="@+id/edt_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mật khẩu cũ"
+            android:textSize="18dp"
+            android:layout_below="@id/title_pass"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            />
+        <EditText
+            android:id="@+id/edt_pass_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mật khẩu mới"
+            android:textSize="18dp"
+            android:layout_below="@id/edt_pass"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            />
+        <EditText
+            android:id="@+id/edt_repass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập lại mật khẩu"
+            android:textSize="18dp"
+            android:layout_below="@id/edt_pass_new"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="30dp"
+            />
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            android:layout_below="@id/edt_repass"
+            android:backgroundTint="@color/pink"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentEnd="true"
+            />
+    </RelativeLayout>
+</RelativeLayout>

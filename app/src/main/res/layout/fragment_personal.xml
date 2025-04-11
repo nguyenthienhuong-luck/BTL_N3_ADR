@@ -55,7 +55,7 @@
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nguyễn Văn Nam"
+            android:text="NaN"
             android:textSize="25dp"
             android:layout_below="@+id/adm_square"
             android:layout_alignTop="@+id/square1_adm_01"
@@ -82,6 +82,7 @@
         >
 
         <TextView
+            android:id="@+id/tv_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -94,6 +95,7 @@
             android:textColor="@color/white"
             android:textSize="30dp" />
         <TextView
+            android:id="@+id/tv_admin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
@@ -101,12 +103,14 @@
             android:drawableStart="@drawable/ic_lock_adm"
             android:drawableEnd="@drawable/ic_back_adm"
             android:text="Quan tri vien"
+            android:visibility="gone"
             android:padding="20dp"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="30dp"
             />
         <TextView
+            android:id="@+id/tv_logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"

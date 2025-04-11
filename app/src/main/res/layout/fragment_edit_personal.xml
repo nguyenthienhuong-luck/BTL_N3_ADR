@@ -3,8 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.main.EditPersonalFragment">
+    tools:context=".activities.personal.EditPersonalFragment">
+
     <RelativeLayout
+        android:id="@+id/layout_top"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:padding="20dp"
@@ -38,10 +40,12 @@
         android:layout_alignParentEnd="true"
         />
     </RelativeLayout>
-    <LinearLayout
+
+    <RelativeLayout
+        android:layout_below="@+id/layout_top"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:padding="40dp"
         >
         <TextView
             android:id="@+id/tv_back"
@@ -50,17 +54,16 @@
             android:text="Đặt tên hiển thị      "
             android:textColor="@color/pink"
             android:textSize="20dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginStart="50dp"
             android:drawableEnd="@drawable/ic_pencil_persional"
+            android:layout_alignParentStart="true"
             />
         <EditText
             android:id="@+id/edt_name"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginStart="50dp"
+            android:layout_below="@+id/tv_back"
             />
         <TextView
             android:id="@+id/tv_count_name"
@@ -68,8 +71,9 @@
             android:layout_height="wrap_content"
             android:text="0/0"
             android:textSize="20dp"
-            android:layout_marginStart="300dp"
+            android:layout_below="@id/edt_name"
+            android:layout_alignParentEnd="true"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

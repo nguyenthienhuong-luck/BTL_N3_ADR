@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".activities.main.HomeFragment">
 
@@ -40,6 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="30dp">
+
 
         <ImageView
             android:layout_width="match_parent"

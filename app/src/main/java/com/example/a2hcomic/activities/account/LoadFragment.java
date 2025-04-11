@@ -52,7 +52,9 @@ public class LoadFragment extends Fragment {
 
                     User user = task.getResult().getValue(User.class);
                     if (user != null) {
-                        if (user.getEmail().equals(emai) && user.getPassword().equals(password) && user.getStatus() == 0) {
+                        if (user.getEmail().equals(emai) &&
+                                user.getPassword().equals(password) &&
+                                user.getStatus() == 0) {
                             Intent intent = new Intent(getActivity(), MainActivity.class);
                             startActivity(intent);
                             getActivity().finish();
