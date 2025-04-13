@@ -66,11 +66,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
     private void hideSoftKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {

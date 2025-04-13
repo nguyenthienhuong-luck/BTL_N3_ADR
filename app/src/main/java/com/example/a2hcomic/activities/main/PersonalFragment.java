@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.example.a2hcomic.R;
 import com.example.a2hcomic.activities.account.AccountActivity;
 import com.example.a2hcomic.activities.account.LoginFragment;
+import com.example.a2hcomic.activities.admin.AdminActivity;
+import com.example.a2hcomic.activities.admin.AdminFragment;
 import com.example.a2hcomic.activities.personal.EditAcountFragment;
 import com.example.a2hcomic.activities.personal.EditPersonalFragment;
 import com.example.a2hcomic.db.FirebaseService;
@@ -68,6 +70,12 @@ public class PersonalFragment extends Fragment {
 
         account.setOnClickListener(v-> {
             changeFragment(new EditAcountFragment());
+        });
+
+        admin.setOnClickListener(v->{
+            // chuyển sang AdminActivity
+            Intent intent = new Intent(getActivity(), AdminActivity.class);
+            startActivity(intent);
         });
 
         logout.setOnClickListener(v->showDialog());

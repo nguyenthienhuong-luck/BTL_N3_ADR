@@ -51,8 +51,6 @@ public class FirebaseService {
     }
 
     // Các phương thức getter cho các đối tượng Firebase
-    public DatabaseReference getDBRef() {
-        return mDBRef;
     public DatabaseReference getComicGenreRef() {
         return mComicGenre;
     }
@@ -68,12 +66,14 @@ public class FirebaseService {
         return mAuthorRef;
     }
 
-    public StorageReference getStorageComicRef() {
-        return mComicStorageRef;
-    }
     public DatabaseReference getGenreRef() {
         return mGenreRef;
     }
+
+    public StorageReference getStorageComicRef() {
+        return mComicStorageRef;
+    }
+
 
     public void createUser(User user) {
         String id = mUserRef.push().getKey();

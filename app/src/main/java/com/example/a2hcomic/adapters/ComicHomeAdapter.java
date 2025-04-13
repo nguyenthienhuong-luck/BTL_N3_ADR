@@ -1,12 +1,16 @@
 package com.example.a2hcomic.adapters;
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.a2hcomic.R;
+import com.example.a2hcomic.activities.admin.StoryDetailFragment;
 import com.example.a2hcomic.models.Comic;
 import com.squareup.picasso.Picasso;
 
@@ -37,8 +41,25 @@ public class ComicHomeAdapter extends RecyclerView.Adapter<ComicHomeAdapter.View
         Picasso.get().load(comic.getImg_url()).into(holder.imageView);
 
         holder.itemView.setOnClickListener(view -> {
-            // Xử lý khi item được nhấn
+            goToDetail(comic, holder.itemView.getContext());
         });
+    }
+
+    private void goToDetail(Comic comic, Context context) {
+        // Chuẩn bị Fragment và Bundle
+        StoryDetailFragment detailFragment = new StoryDetailFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("comic", comic);
+        detailFragment.setArguments(bundle);
+
+        ((FragmentActivity) context).findViewById(R.id.nav_main).setVisibility(View.GONE);
+
+        // Thay thế Fragment hiện tại bằng Fragment chi tiết
+        ((FragmentActivity) context).getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main, detailFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

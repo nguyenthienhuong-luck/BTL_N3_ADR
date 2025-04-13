@@ -177,7 +177,8 @@ public class UpLoadComicFragment extends Fragment {
         loading.setVisibility(View.VISIBLE);
         String comicId = fb.getComicRef().push().getKey(); // ID duy nhất cho comic
         // user id trong Shared preference
-        String userId = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE).getString("id", "");
+        String userId = getActivity().getSharedPreferences("login_state", getActivity().MODE_PRIVATE).getString("id", "");;
+
         Comic newComic = new Comic();
         newComic.setId(comicId);
         newComic.setTitle(edtComicName.getText().toString());

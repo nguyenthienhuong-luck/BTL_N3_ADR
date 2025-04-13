@@ -18,6 +18,7 @@ import com.example.a2hcomic.R;
 import com.example.a2hcomic.adapters.ComicHomeAdapter;
 import com.example.a2hcomic.db.FirebaseService;
 import com.example.a2hcomic.models.Comic;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -28,6 +29,7 @@ public class HomeFragment extends Fragment {
 
     private RecyclerView rvnew, rvfav;
     private ImageSlider imageSlider;
+    private BottomNavigationView nav_main;
 
     private FirebaseService fb;
 
@@ -51,6 +53,7 @@ public class HomeFragment extends Fragment {
         rvnew = view.findViewById(R.id.listNew);
         rvfav = view.findViewById(R.id.listFav);
         imageSlider = view.findViewById(R.id.imageSlider);
+        nav_main = getActivity().findViewById(R.id.nav_main);
 
         fb = new FirebaseService();
 
@@ -70,7 +73,7 @@ public class HomeFragment extends Fragment {
                 false));
         rvfav.setAdapter(adapterFav);
 
-        createComic();
+        getComic();
 
         // Tạo slider vào thêm ảnh vào slider
         ArrayList<SlideModel> slideModels = new ArrayList<>();
@@ -84,7 +87,14 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-    public void createComic(){
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        nav_main.setVisibility(View.VISIBLE);
+    }
+
+    public void getComic(){
         fb.getComicRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -92,7 +102,7 @@ public class HomeFragment extends Fragment {
                     Comic comic = dataSnapshot.getValue(Comic.class);
                     comicNewest.add(comic);
                 }
-                comicNewest.sort((o1, o2) -> o2.getCreate_at() - o1.getCreate_at());
+                comicNewest.sort((o1, o2) -> (int) (o2.getCreated_at() - o1.getCreated_at()));
 
                 adapterNew.notifyDataSetChanged();
             }

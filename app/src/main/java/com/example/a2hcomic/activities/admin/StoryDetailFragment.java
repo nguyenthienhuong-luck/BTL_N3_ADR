@@ -12,10 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a2hcomic.R;
+import com.example.a2hcomic.activities.main.ReadComicFragment;
 import com.example.a2hcomic.adapters.GenreAdapter;
 import com.example.a2hcomic.db.FirebaseService;
 import com.example.a2hcomic.models.Comic;
@@ -38,7 +40,8 @@ public class StoryDetailFragment extends Fragment {
     private TextView tv_name_story, tv_author_story, tvTime, des_tv;
     private TextView btn_favorite;
     private RecyclerView rcv_genres;
-    private TextView btn_read, btn_cmt;
+    private TextView btn_read;
+    private LinearLayout bottom_buttons;
 
     private GenreAdapter genreAdapter;
     private ArrayList<Genre> genreList = new ArrayList<>();
@@ -72,7 +75,7 @@ public class StoryDetailFragment extends Fragment {
         btn_favorite = v.findViewById(R.id.btn_favorite);
         rcv_genres = v.findViewById(R.id.rcv_genres);
         btn_read = v.findViewById(R.id.btn_read);
-        btn_cmt = v.findViewById(R.id.btn_cmt);
+        bottom_buttons = v.findViewById(R.id.bottom_buttons);
 
         fb = new FirebaseService();
 
@@ -91,6 +94,11 @@ public class StoryDetailFragment extends Fragment {
 
         btn_back.setOnClickListener(v1 -> requireActivity().getSupportFragmentManager().popBackStack());
 
+        // kiểm tra không phải frame_main thì ẩn btn Read
+        if (!requireActivity().getClass().getSimpleName().equals("MainActivity")) {
+            bottom_buttons.setVisibility(View.GONE);
+        }
+
         btn_read.setOnClickListener(v1 -> {
             readComic();
         });
@@ -99,7 +107,16 @@ public class StoryDetailFragment extends Fragment {
     }
 
     private void readComic() {
-        Toast.makeText(getContext(), "Đọc truyện: " + comic.getUrl_pdf(), Toast.LENGTH_SHORT).show();
+        // mở ReadComicFragment và truyền dữ liệu comic vào
+        ReadComicFragment readComicFragment = new ReadComicFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("comic", comic);
+        readComicFragment.setArguments(bundle);
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_main, readComicFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void getGenre(String comicId) {
