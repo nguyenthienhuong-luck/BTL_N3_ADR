@@ -29,9 +29,6 @@ public class EditPersonalFragment extends Fragment {
     private TextView tv_count_name;
     private String userID;
 
-
-
-
     private FirebaseService fb;
 
     public EditPersonalFragment() {
