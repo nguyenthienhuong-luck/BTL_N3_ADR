@@ -1,24 +1,32 @@
 package com.example.a2hcomic.models;
 
 public class User {
-    private String id,username,email,password,avatar_url;
-    private int role,status, create_at;
+    private String id;
+    private String username;
+    private String email;
+    private String password;
+    private String avatar_url;
+    private int role;
+    private int status;
+    private int create_at;
 
+    // Constructor rỗng cần thiết cho Firebase
     public User() {
-
     }
 
-    public User(int create_at, int status, int role, String avatar_url, String password, String email, String username, String id) {
-        this.create_at = create_at;
-        this.status = status;
-        this.role = role;
-        this.avatar_url = avatar_url;
-        this.password = password;
-        this.email = email;
-        this.username = username;
+    // Constructor đầy đủ
+    public User(String id, String username, String email, String password, String avatar_url, int role, int status, int create_at) {
         this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.avatar_url = avatar_url;
+        this.role = role;
+        this.status = status;
+        this.create_at = create_at;
     }
 
+    // Getters và Setters
     public String getId() {
         return id;
     }
