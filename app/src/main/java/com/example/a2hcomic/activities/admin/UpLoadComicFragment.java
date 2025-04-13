@@ -194,7 +194,7 @@ public class UpLoadComicFragment extends Fragment {
         if (imgBannerUri != null) pendingUploads++;
         if (pdfUri != null) pendingUploads++;
 
-        if (pendingUploads == 0) return;
+        if (pendingUploads < 3) return;
 
         // Biến final để theo dõi số lượng file đã tải lên
         final int[] completedUploads = {0};
