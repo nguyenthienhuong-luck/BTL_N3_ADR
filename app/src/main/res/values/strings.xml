@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">2Hcomic</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="back_button">Quay lại</string>
+    <string name="search_button">Tìm kiếm</string>
+    <string name="add_comic">Thêm truyện</string>
+    <string name="add_comic_button">Thêm truyện</string>
+    <string name="add_chapter">Thêm chương</string>
+    <string name="add_author">Thêm tác giả</string>
+
+
 </resources>

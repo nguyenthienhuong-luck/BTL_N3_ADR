@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:layout_marginTop="8dp"
+    android:background="@drawable/ic_name_author"
+    android:gravity="center_vertical">
+
+    <!-- Tên tác giả -->
+    <TextView
+        android:id="@+id/tvAuthorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Nguyễn Văn A"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <!-- Nút xóa -->
+    <ImageButton
+        android:id="@+id/btnDelete"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_bin"
+        android:contentDescription="Xóa tác giả" />
+
+</LinearLayout>
