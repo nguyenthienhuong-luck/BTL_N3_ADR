@@ -14,7 +14,6 @@ public class Comic implements Serializable {
     private long created_at;
 
     public Comic() {
-        this("", "", "", "", "", "", "", "", 0);
     }
 
     public Comic(String id, String title, String img_url, String banner_url, String author_id, String description, String user_id, String url_pdf, long created_at) {

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.main.PersonalFragment">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/adm_square"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@drawable/squaretop_adm"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cá Nhân"
+            android:textSize="30dp"
+            android:layout_centerInParent="true"
+            android:layout_alignTop="@id/adm_square"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            />
+
+        <ImageView
+            android:id="@+id/square1_adm_01"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_below="@id/adm_square"
+            android:src="@drawable/square_adm_1"
+            android:layout_marginTop="55dp"
+            android:layout_marginStart="40dp"
+            />
+
+        <ImageView
+            android:id="@+id/icon1_adm"
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/adm_square"
+            android:layout_alignTop="@id/square1_adm_01"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/icon1_adm"
+            />
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NaN"
+            android:textSize="25dp"
+            android:layout_below="@+id/adm_square"
+            android:layout_alignTop="@+id/square1_adm_01"
+            android:layout_marginStart="130dp"
+            />
+        <TextView
+            android:id="@+id/tv_edt_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chỉnh sửa hồ sơ"
+            android:layout_below="@id/name"
+            android:textSize="25dp"
+            android:textColor="@color/pink"
+            android:drawableStart="@drawable/icon2_adm"
+            android:layout_marginStart="130dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="30dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/br_square_adm"
+            android:drawableStart="@drawable/ic_shield_adm"
+            android:drawableEnd="@drawable/ic_back_adm"
+            android:text="Tài khoản"
+            android:padding="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+        <TextView
+            android:id="@+id/tv_admin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:background="@drawable/br_square_adm"
+            android:drawableStart="@drawable/ic_lock_adm"
+            android:drawableEnd="@drawable/ic_back_adm"
+            android:text="Quan tri vien"
+            android:visibility="gone"
+            android:padding="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp"
+            />
+        <TextView
+            android:id="@+id/tv_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/br_square_adm"
+            android:drawableStart="@drawable/ic_exit_adm"
+            android:drawableEnd="@drawable/ic_back_adm"
+            android:text="Dang xuat"
+            android:padding="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

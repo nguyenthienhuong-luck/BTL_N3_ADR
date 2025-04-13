@@ -51,6 +51,8 @@ public class FirebaseService {
     }
 
     // Các phương thức getter cho các đối tượng Firebase
+    public DatabaseReference getDBRef() {
+        return mDBRef;
     public DatabaseReference getComicGenreRef() {
         return mComicGenre;
     }

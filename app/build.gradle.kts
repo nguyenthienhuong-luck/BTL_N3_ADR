@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -44,7 +45,10 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    // Thư viện picasso
+    implementation ("com.github.denzcoskun:ImageSlideshow:0.1.2")
+    implementation ("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
+    implementation ("com.google.android.material:material:1.2.0")
+    implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation ("com.squareup.picasso:picasso:2.8")
 
 }

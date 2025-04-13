@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.account.LoginFragment">
+
+    <TextView
+        android:id="@+id/titlelogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đăng Nhập"
+        android:layout_above="@id/layout_login"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:textSize="30dp"
+        android:textColor="@color/pink"
+        />
+
+    <RelativeLayout
+        android:id="@+id/layout_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/square1_login"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        >
+
+        <ImageView
+            android:id="@+id/circle2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/circle2_login"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="15dp"
+            />
+        <EditText
+            android:id="@+id/edt_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email dang nhap"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/circle2"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="20dp"
+            android:drawableEnd="@drawable/user_ic_login"
+            />
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edt_email"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="30dp"
+            android:drawableEnd="@drawable/key_ic_login"
+            android:hint="Mat khau"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            android:id="@+id/bt_dangnhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edt_password"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="30dp"
+            android:text="Đăng Nhập"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/pink"/>
+
+        <TextView
+            android:id="@+id/bt_dangky1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bt_dangnhap"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="20dp"
+            android:text="Bạn chưa có tài khoản? Đăng ký"
+            android:textColor="@color/pink"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+
+</RelativeLayout>
