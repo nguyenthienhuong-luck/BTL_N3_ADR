@@ -17,18 +17,16 @@ import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder> {
 
-    private Context context;
     private List<User> userList;
 
-    public UserAdapter(Context context, List<User> userList) {
-        this.context = context;
+    public UserAdapter( List<User> userList) {
         this.userList = userList;
     }
 
     @NonNull
     @Override
     public UserViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_user, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_user, parent, false);
         return new UserViewHolder(view);
     }
 
@@ -37,12 +35,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
         User user = userList.get(position);
         holder.tvUsername.setText(user.getUsername());
 
-        // Load avatar bằng Glide
-      //  Glide.with(context)
-             //   .load(user.getAvatar_url())
-          //      .placeholder(R.drawable.ic_avt)
-             //   .error(R.drawable.ic_avt)
-             //   .into(holder.imgAvatar);
     }
 
     @Override
