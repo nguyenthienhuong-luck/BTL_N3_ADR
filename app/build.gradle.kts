@@ -49,5 +49,5 @@ dependencies {
     implementation ("com.google.android.material:material:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation ("com.squareup.picasso:picasso:2.8")
-
+    implementation ("com.rmtheis:tess-two:9.1.0")
 }
