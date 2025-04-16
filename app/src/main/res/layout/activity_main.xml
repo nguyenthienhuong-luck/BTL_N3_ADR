@@ -19,9 +19,10 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:itemBackground="@color/pink"
+        android:layout_height="100dp"
+        android:background="@drawable/bottomnavbar"
         app:itemIconTint="@color/cus_item_botnav"
         app:itemTextColor="@color/cus_item_botnav"
-        app:menu="@menu/menu_bot_nav" />
+        app:menu="@menu/menu_bot_nav"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </LinearLayout>

@@ -15,7 +15,7 @@ import com.example.a2hcomic.R;
 
 public class    AdminFragment extends Fragment {
 
-    private Button btnComic, btnAuthors, btnGenre, btnUser;
+    private Button btnComic, btnAuthors, btnGenre, btnUser, btnSlider;
     private ImageButton btnBack;
 
     public AdminFragment() {
@@ -37,11 +37,13 @@ public class    AdminFragment extends Fragment {
         btnGenre = v.findViewById(R.id.btn_genre);
         btnBack = v.findViewById(R.id.btnBack);
         btnUser = v.findViewById(R.id.btn_user);
+        btnSlider = v.findViewById(R.id.btn_slider);
 
         btnComic.setOnClickListener(v1 -> changeFragment(new ComicFragment()));
         btnAuthors.setOnClickListener(v1 -> changeFragment(new AuthorFragment()));
         btnGenre.setOnClickListener(v1 -> changeFragment(new GenreFragment()));
         btnUser.setOnClickListener(v1 -> changeFragment(new UserFragment()));
+        btnSlider.setOnClickListener(v1 -> changeFragment(new AddSliderFragment()));
 
         btnBack.setOnClickListener(v1 -> {
             getActivity().finish();

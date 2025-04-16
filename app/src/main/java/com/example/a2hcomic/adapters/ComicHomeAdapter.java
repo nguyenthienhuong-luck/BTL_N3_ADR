@@ -1,4 +1,5 @@
 package com.example.a2hcomic.adapters;
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -6,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.a2hcomic.R;
 import com.example.a2hcomic.activities.admin.StoryDetailFragment;
 import com.example.a2hcomic.models.Comic;
@@ -19,7 +22,7 @@ import java.util.List;
 public class ComicHomeAdapter extends RecyclerView.Adapter<ComicHomeAdapter.ViewHolder> {
     private List<Comic> comics;
 
-    public ComicHomeAdapter(List<Comic> comics){
+    public ComicHomeAdapter(List<Comic> comics) {
         this.comics = comics;
     }
 
@@ -67,6 +70,12 @@ public class ComicHomeAdapter extends RecyclerView.Adapter<ComicHomeAdapter.View
         return comics.size();
     }
 
+    // Thêm phương thức setComicList để cập nhật danh sách comics
+    public void setComicList(List<Comic> newComics) {
+        this.comics = newComics;
+        notifyDataSetChanged();  // Gọi notifyDataSetChanged để cập nhật RecyclerView
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
@@ -77,5 +86,4 @@ public class ComicHomeAdapter extends RecyclerView.Adapter<ComicHomeAdapter.View
             textView = itemView.findViewById(R.id.item_titlecomic);
         }
     }
-    
 }

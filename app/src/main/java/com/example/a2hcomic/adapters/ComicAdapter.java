@@ -46,12 +46,13 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicViewHol
         holder.tvTitle.setText(comic.getTitle());
         Picasso.get().load(comic.getImg_url()).into(holder.imgTitle);
         holder.tvTime.setText("Thời gian đăng: " + formatTime(comic.getCreated_at()));
+        holder.tvViewCount.setText("Views: " + comic.getViewCount()); // Displaying view count
 
         getAuthorName(comic.getAuthor_id(), holder.tvAuthor);
 
         // Xoá truyện
         holder.btnDelete.setOnClickListener(v -> {
-
+            // Implement delete action here
         });
 
         // Click vào item
@@ -61,7 +62,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicViewHol
     }
 
     private void goToDetail(Comic comic, Context context) {
-        // Chuẩn bị Fragment và Bundle
+        // Chuẩn bị Fragment và Bundle-> đẩy sag trang chi tiết truyện
         StoryDetailFragment detailFragment = new StoryDetailFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("comic", comic);
@@ -98,7 +99,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicViewHol
 
     public static class ComicViewHolder extends RecyclerView.ViewHolder {
         ImageView imgTitle;
-        TextView tvTitle, tvAuthor, tvTime;
+        TextView tvTitle, tvAuthor, tvTime, tvViewCount;
         ImageButton btnDelete;
 
         public ComicViewHolder(@NonNull View itemView) {
@@ -109,7 +110,7 @@ public class ComicAdapter extends RecyclerView.Adapter<ComicAdapter.ComicViewHol
             tvAuthor = itemView.findViewById(R.id.tvAuthor);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             tvTime = itemView.findViewById(R.id.tvTime);
+            tvViewCount = itemView.findViewById(R.id.listTopViewed); // Added for view count
         }
     }
-
 }
