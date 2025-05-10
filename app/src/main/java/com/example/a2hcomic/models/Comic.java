@@ -12,11 +12,14 @@ public class Comic implements Serializable {
     private String user_id;
     private String url_pdf;
     private long created_at;
+    private int viewCount; // 👈 Thêm viewCount
 
     public Comic() {
     }
 
-    public Comic(String id, String title, String img_url, String banner_url, String author_id, String description, String user_id, String url_pdf, long created_at) {
+    public Comic(String id, String title, String img_url, String banner_url,
+                 String author_id, String description, String user_id,
+                 String url_pdf, long created_at, int viewCount) {
         this.id = id;
         this.title = title;
         this.img_url = img_url;
@@ -26,8 +29,10 @@ public class Comic implements Serializable {
         this.user_id = user_id;
         this.url_pdf = url_pdf;
         this.created_at = created_at;
+        this.viewCount = viewCount;
     }
 
+    // Getter và Setter
     public String getId() {
         return id;
     }
@@ -98,5 +103,13 @@ public class Comic implements Serializable {
 
     public void setCreated_at(long created_at) {
         this.created_at = created_at;
+    }
+
+    public int getViewCount() {
+        return viewCount;
+    }
+
+    public void setViewCount(int viewCount) {
+        this.viewCount = viewCount;
     }
 }

@@ -38,22 +38,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             >
-            <com.denzcoskun.imageslider.ImageSlider
-                android:id="@+id/imageSlider"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                app:iss_auto_cycle="true"
-                app:iss_delay="1000"
-                app:iss_period="1000" />
+                app:cardCornerRadius="18dp">
 
+                <com.denzcoskun.imageslider.ImageSlider
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:iss_auto_cycle="true"
+                    app:iss_delay="1000"
+                    app:iss_period="1000" />
+
+            </androidx.cardview.widget.CardView>
             <RelativeLayout
                 android:id="@+id/new_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                >
+                android:layout_marginEnd="30dp">
 
                 <TextView
                     android:id="@+id/titlenew"
@@ -75,30 +80,30 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/fav_bg"
+                android:id="@+id/view_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                >
+                android:layout_margin="30dp">
 
+                <!-- Tiêu đề "Đọc nhiều nhất" -->
                 <TextView
-                    android:id="@+id/titlefav"
+                    android:id="@+id/titletopview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Yêu Thích"
+                    android:text="Đọc nhiều nhất"
                     android:textColor="@color/pink"
-                    android:textSize="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp" />
 
-                    />
-
+                <!-- Danh sách truyện đọc nhiều -->
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/listFav"
+                    android:id="@+id/listTopViewed"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/titlefav" />
-
+                    android:layout_below="@id/titletopview" />
             </RelativeLayout>
+
 
         </LinearLayout>
     </ScrollView>

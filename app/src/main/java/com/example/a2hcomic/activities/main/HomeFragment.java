@@ -1,15 +1,14 @@
 package com.example.a2hcomic.activities.main;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
@@ -18,6 +17,7 @@ import com.example.a2hcomic.R;
 import com.example.a2hcomic.adapters.ComicHomeAdapter;
 import com.example.a2hcomic.db.FirebaseService;
 import com.example.a2hcomic.models.Comic;
+import com.example.a2hcomic.models.Slider;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,63 +27,58 @@ import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView rvnew, rvfav;
+    private RecyclerView rvNew, rvTopViewed;
     private ImageSlider imageSlider;
     private BottomNavigationView nav_main;
 
     private FirebaseService fb;
+    private ComicHomeAdapter adapterNew, adapterTopViewed;
+    private ArrayList<Comic> comicNewest, comicsTopViewed;
+    private ArrayList<Slider> listSlider;
 
-
-    private ComicHomeAdapter adapterNew, adapterFav;
-    private  ArrayList<Comic> comicNewest, comicsFav;
     public HomeFragment() {
+        // Constructor mặc định
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        rvnew = view.findViewById(R.id.listNew);
-        rvfav = view.findViewById(R.id.listFav);
+        // Ánh xạ các view
+        rvNew = view.findViewById(R.id.listNew);
+        rvTopViewed = view.findViewById(R.id.listTopViewed); // dùng lại ID cũ nếu layout chưa sửa
         imageSlider = view.findViewById(R.id.imageSlider);
         nav_main = getActivity().findViewById(R.id.nav_main);
 
+        // Khởi tạo Firebase service
         fb = new FirebaseService();
 
+        // Tạo danh sách và adapter
         comicNewest = new ArrayList<>();
-        comicsFav = new ArrayList<>();
+        comicsTopViewed = new ArrayList<>();
+        listSlider = new ArrayList<>();
 
         adapterNew = new ComicHomeAdapter(comicNewest);
-        adapterFav = new ComicHomeAdapter(comicsFav);
+        adapterTopViewed = new ComicHomeAdapter(comicsTopViewed);
 
-        rvnew.setLayoutManager(new LinearLayoutManager( getContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false));
-        rvnew.setAdapter(adapterNew);
+        // Thiết lập layout và adapter cho danh sách truyện
+        rvNew.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvNew.setAdapter(adapterNew);
 
-        rvfav.setLayoutManager(new LinearLayoutManager(getContext(),
-                LinearLayoutManager.HORIZONTAL,
-                false));
-        rvfav.setAdapter(adapterFav);
+        rvTopViewed.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvTopViewed.setAdapter(adapterTopViewed);
 
-        getComic();
-
-        // Tạo slider vào thêm ảnh vào slider
-        ArrayList<SlideModel> slideModels = new ArrayList<>();
-
-        slideModels.add(new SlideModel(R.drawable.slider_1, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.slider_2, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.slider_3, ScaleTypes.CENTER_CROP));
-        slideModels.add(new SlideModel(R.drawable.slider_4 , ScaleTypes.CENTER_CROP));
-
-        imageSlider.setImageList(slideModels, ScaleTypes.CENTER_CROP);
+        // Lấy dữ liệu truyện và slider
+        getComicNewest();
+        getTopViewedComics();
+        getSlider();
 
         return view;
     }
@@ -94,21 +89,85 @@ public class HomeFragment extends Fragment {
         nav_main.setVisibility(View.VISIBLE);
     }
 
-    public void getComic(){
+    // Lấy dữ liệu truyện mới nhất từ Firebase
+    private void getComicNewest() {
         fb.getComicRef().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                comicNewest.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Comic comic = dataSnapshot.getValue(Comic.class);
-                    comicNewest.add(comic);
+                    if (comic != null) {
+                        comicNewest.add(comic);
+                    }
                 }
+                // Sắp xếp theo thời gian tạo giảm dần
                 comicNewest.sort((o1, o2) -> (int) (o2.getCreated_at() - o1.getCreated_at()));
-
                 adapterNew.notifyDataSetChanged();
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
+
+    // Lấy danh sách truyện có lượt xem cao nhất
+    private void getTopViewedComics() {
+        fb.getComicRef().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                comicsTopViewed.clear();
+                for (DataSnapshot child : snapshot.getChildren()) {
+                    Comic comic = child.getValue(Comic.class);
+                    if (comic != null) {
+                        comicsTopViewed.add(comic);
+                    }
+                }
+
+                // Sắp xếp theo lượt xem giảm dần
+                comicsTopViewed.sort((c1, c2) -> Integer.compare(c2.getViewCount(), c1.getViewCount()));
+
+                // Giới hạn top 10 truyện
+                if (comicsTopViewed.size() > 10) {
+                    comicsTopViewed = new ArrayList<>(comicsTopViewed.subList(0, 10));
+                }
+
+                adapterTopViewed.setComicList(comicsTopViewed);
+                adapterTopViewed.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+    }
+
+    // Hàm thiết lập slider
+    private void getSlider() {
+        fb.getSliderRef().addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    listSlider.clear();
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        Slider slider = dataSnapshot.getValue(Slider.class);
+                        if (slider != null) {
+                            listSlider.add(slider);
+                        }
+                    }
+                    setSlider();
+                }
+            }
+
+            public void setSlider() {
+                ArrayList<SlideModel> slideModels = new ArrayList<>();
+                for (Slider s : listSlider) {
+                    slideModels.add(new SlideModel(s.getImg_url(), ScaleTypes.CENTER_CROP));
+                }
+                imageSlider.setImageList(slideModels, ScaleTypes.CENTER_CROP);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
         });
     }
 }
